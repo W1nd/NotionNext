@@ -25,7 +25,6 @@ import { ArticleLock } from './components/ArticleLock'
 import { Transition } from '@headlessui/react'
 import { Style } from './style'
 import CommonHead from '@/components/CommonHead'
-import BlogArchiveItem from './components/BlogArchiveItem'
 import BlogPostListAll from './components/BlogPostListAll'
 import BlogPostCard from './components/BlogPostCard'
 import Link from 'next/link'
@@ -33,6 +32,7 @@ import dynamic from 'next/dynamic'
 import { MenuItem } from './components/MenuItem'
 import LogoBar from './components/LogoBar'
 import { siteConfig } from '@/lib/config'
+import Live2D from '@/components/Live2D'
 
 const WWAds = dynamic(() => import('@/components/WWAds'), { ssr: false })
 
@@ -105,6 +105,7 @@ const LayoutBase = (props) => {
 
                         {/* 页脚站点信息 */}
                         <div className='w-56 fixed left-0 bottom-0 z-0'>
+                            <Live2D />
                             <Footer {...props} />
                         </div>
                     </div>
@@ -271,14 +272,7 @@ const LayoutSearch = (props) => {
  * @returns
  */
 const LayoutArchive = (props) => {
-  return <div {...props}></div>
-  // const { archivePosts } = props
-
-  return <>
-        <div className="mb-10 pb-20 md:py-12 py-3  min-h-full">
-            {Object.keys(archivePosts)?.map(archiveTitle => <BlogArchiveItem key={archiveTitle} archiveTitle={archiveTitle} archivePosts={archivePosts} />)}
-        </div>
-  </>
+  return <></>
 }
 
 /**
@@ -325,27 +319,7 @@ const LayoutCategoryIndex = (props) => {
  * 标签列表
  */
 const LayoutTagIndex = (props) => {
-  return <div {...props}></div>
-  // const { tagOptions } = props
-  // const { locale } = useGlobal()
-
-  return <>
-     <div className="bg-white dark:bg-gray-700 py-10">
-                <div className="dark:text-gray-200 mb-5">
-                    <i className="mr-4 fas fa-tag" />
-                    {locale.COMMON.TAGS}:
-                </div>
-                <div id="tags-list" className="duration-200 flex flex-wrap">
-                    {tagOptions?.map(tag => {
-                      return (
-                            <div key={tag.name} className="p-2">
-                                <TagItemMini key={tag.name} tag={tag} />
-                            </div>
-                      )
-                    })}
-                </div>
-            </div>
-  </>
+  return <></>
 }
 
 export {
